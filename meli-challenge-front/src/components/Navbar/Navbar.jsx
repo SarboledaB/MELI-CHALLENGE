@@ -8,8 +8,8 @@ const Navbar = () => {
   return (
     <nav className="ml-navbar">
       <div className="ml-navbar__container">
-        <img src={logoML} alt="Logo" onClick={() => navigate(`/`)} />
-        <Searchbar data-testid="searchbar"/>
+        <img src={logoML} alt="Logo" onClick={() => navigate(`/`)} data-testid="logo"/>
+        <Searchbar/>
       </div>
     </nav>
   );

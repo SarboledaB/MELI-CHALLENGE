@@ -16,6 +16,7 @@ const ProductItem = ({ product }) => {
 
   return (
     <div
+      data-testid="product-item"
       className="ml-product-item"
       onClick={() => navigate(`/items/${product.id}`)}
     >
@@ -23,11 +24,14 @@ const ProductItem = ({ product }) => {
         src={product.picture}
         alt={product.title}
         className="ml-product-item__image"
+        data-testid="product-item-image"
       />
       <div className="ml-product-item__details">
         <h3>
           $ {formatCurrency(product.price.amount)}
-          <img src={freeShipping} alt={product.title} />
+          {
+            product.free_shipping ?? <img src={freeShipping} alt={product.title} />
+          }
         </h3>
         <p className="ml-product-item__title">{product.title}</p>
       </div>
