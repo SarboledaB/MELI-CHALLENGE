@@ -1,0 +1,28 @@
+@use '@styles/variables';
+
+.ml-searchbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  input {
+    padding-left: variables.$space-md;
+    border: none;
+    border-radius: variables.$border-radius 0 0 variables.$border-radius;
+    outline: none;
+    width: 100%;
+    font-size: variables.$font-size-md;
+  }
+
+  button {
+    display: flex;
+    width: 46px;
+    height: 40px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 variables.$border-radius variables.$border-radius 0;
+    background-color: variables.$gray-scale-4;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,18 @@
+@use '@styles/variables';
+
+.ml-navbar {
+  display: flex;
+  background-color: variables.$primary-color;
+  justify-content: center;
+  margin: auto;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: variables.$container-max-width;
+    gap: 18px;
+  }
+}

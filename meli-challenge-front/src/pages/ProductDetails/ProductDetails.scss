@@ -1,0 +1,66 @@
+@use '@styles/variables';
+
+.ml-product-details {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    background-color: variables.$gray-scale-5;
+    width: 100%;
+    max-width: variables.$container-max-width;
+    margin: variables.$space-md;
+    border-radius: variables.$border-radius;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin: variables.$space-xl 0 variables.$space-xl variables.$space-xl;
+    width: 70%;
+
+    img {
+      align-self: center;
+    }
+
+    h1 {
+      margin: variables.$space-xl 0;
+      font-size: variables.$font-size-xxl;
+    }
+
+    p {
+      color: variables.$gray-scale-3;
+      font-size: variables.$font-size-md;
+    }
+  }
+
+  &__summary {
+    width: 30%;
+    margin: variables.$space-xl variables.$space-xl variables.$space-xl 0;
+
+    span {
+      font-size: variables.$font-size-sm;
+    }
+
+    h1 {
+      font-size: variables.$font-size-xl;
+    }
+
+    h2 {
+      font-size: variables.$font-size-xxxl;
+      font-weight: unset;
+      margin: variables.$space-xl 0;
+    }
+
+    button {
+      color: variables.$gray-scale-5;
+      background: variables.$secondary-color;
+      padding: variables.$space-md;
+      border-radius: variables.$border-radius;
+      width: 100%;
+      border: none;
+    }
+  }
+}

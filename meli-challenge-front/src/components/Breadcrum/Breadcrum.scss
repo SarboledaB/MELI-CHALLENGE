@@ -1,0 +1,21 @@
+@use '@styles/variables';
+
+.ml-breadcrumb {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: variables.$container-max-width;
+  margin-top: variables.$space-sm;
+  color: variables.$gray-scale-3;
+  font-size: variables.$font-size-sm;
+
+  &__category {
+    &-divider {
+      margin: 0 variables.$space-xs;
+    }
+
+    &:last-child {
+      font-weight: bold;
+    }
+  }
+}

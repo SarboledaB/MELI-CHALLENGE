@@ -1,0 +1,55 @@
+@use '@styles/variables';
+
+.ml-product-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+
+  &:not(:last-child)::after {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: variables.$gray-scale-4;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__image {
+    width: 180px;
+    height: 180px;
+    border-radius: variables.$border-radius;
+    padding: variables.$space-md;
+  }
+
+  &__details {
+    width: 70%;
+    h3 {
+      display: flex;
+      margin: variables.$space-xl 0;
+      font-size: variables.$font-size-xl;
+      font-weight: unset;
+      align-items: center;
+      img {
+        width: 18px;
+        height: 18px;
+        margin-left: variables.$space-sm;
+      }
+    }
+  }
+
+  &__title {
+    font-size: variables.$font-size-lg;
+  }
+
+  &__condition {
+    color: variables.$gray-scale-3;
+    font-size: variables.$font-size-xs;
+    margin: variables.$space-xl 0;
+  }
+}

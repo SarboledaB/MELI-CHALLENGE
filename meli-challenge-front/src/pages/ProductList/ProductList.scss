@@ -1,0 +1,19 @@
+@use '@styles/variables';
+
+.ml-product-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: variables.$gray-scale-5;
+    width: 100%;
+    max-width: variables.$container-max-width;
+    margin: variables.$space-md;
+    border-radius: variables.$border-radius;
+  }
+}
