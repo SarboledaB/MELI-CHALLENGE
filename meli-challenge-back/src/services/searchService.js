@@ -13,7 +13,7 @@ async function fetchSearchResults(query) {
     });
     return response.data;
   } catch (error) {
-    throw new Error('Error al consultar el API externo');
+    throw new Error('Error while querying the external API');
   }
 }
 

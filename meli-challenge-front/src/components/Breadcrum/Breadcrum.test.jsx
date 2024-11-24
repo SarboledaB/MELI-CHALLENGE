@@ -9,13 +9,13 @@ describe('Breadcrumb component', () => {
 
   it('should render the categories correctly when passed as an array', () => {
     const categories = ['Home', 'Products', 'Electronics'];
-    const { container } = render(<Breadcrumb categories={categories} />);
+    render(<Breadcrumb categories={categories} />);
 
-    const breadcrumbItems = container.querySelectorAll('.ml-breadcrumb__category');
+    const breadcrumbItems = screen.getAllByTestId('breadcrumb-category');
 
     expect(breadcrumbItems).toHaveLength(categories.length);
 
-    categories.forEach((category, index) => {
+    categories.forEach((category) => {
       expect(screen.getByText(category)).toBeInTheDocument();
     });
   });

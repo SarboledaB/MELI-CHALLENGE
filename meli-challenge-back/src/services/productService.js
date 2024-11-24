@@ -11,7 +11,7 @@ async function fetchProduct(productId) {
     const response = await apiClient.get(`/items/${productId}`);
     return response.data;
   } catch (error) {
-    throw new Error('Error al consultar el API externo');
+    throw new Error('Error while querying the external API');
   }
 }
 
@@ -26,7 +26,7 @@ async function fetchProductDetails(productId) {
     const response = await apiClient.get(`/items/${productId}/description`);
     return response.data;
   } catch (error) {
-    throw new Error('Error al consultar el API externo');
+    throw new Error('Error while querying the external API');
   }
 }
 

@@ -1,6 +1,7 @@
 module.exports = {
   transform: {
-    "^.+\\.(js|jsx)$": "babel-jest"
+    "^.+\\.(js|jsx)$": "babel-jest",
+    '^.+\\.(css|scss|svg|jpg|jpeg|png|gif|webp|mp4)$': 'jest-transform-stub',
   },
   testEnvironment: "jsdom",
   moduleFileExtensions: ["js", "jsx", "json", "node"],
@@ -10,8 +11,7 @@ module.exports = {
     "assets/.*",
   ],
   moduleNameMapper: {
-    '\\.scss$': 'identity-obj-proxy',
-    '\\.png$': 'identity-obj-proxy',
+    '\\.(css|scss|svg|jpg|jpeg|png|gif|webp|mp4)$': '<rootDir>/__mocks__/fileMock.js',
   },
   setupFilesAfterEnv: ['./jest-setup.js']
 };

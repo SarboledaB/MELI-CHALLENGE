@@ -15,14 +15,15 @@ const Searchbar = () => {
   };
 
   return (
-    <form className="ml-searchbar" onSubmit={handleSearch}>
+    <form className="ml-searchbar" onSubmit={handleSearch} data-testid="searchbar">
       <input
+        data-testid="input"
         type="text"
         placeholder="Nunca dejes de buscar"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button type="submit">
+      <button type="submit" data-testid="searchbar-button">
         <img src={search} alt="Logo" className="ml-search__logo" />
       </button>
     </form>
