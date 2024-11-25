@@ -27,7 +27,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="ml-product-details">
+    <div className="ml-product-details" data-testid='product-details'>
       <Breadcrumb categories={categories} />
       <div className="ml-product-details__container">
         <div className="ml-product-details__image">

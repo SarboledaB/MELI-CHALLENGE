@@ -22,9 +22,9 @@ const ProductItem = ({ product }) => {
       <div className="ml-product-item__details">
         <h3>
           {formatCurrency(product.price.amount, product.price.currency)}
-          {product.free_shipping ?? (
-            <img src={freeShipping} alt={product.title} />
-          )}
+          {product.free_shipping ? (
+            <img src={freeShipping} alt="freeShipping-icon" data-testid="freeShipping-icon" />
+          ) : ('')}
         </h3>
         <p className="ml-product-item__title">{product.title}</p>
       </div>

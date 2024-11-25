@@ -14,7 +14,7 @@ const ProductListSkeleton = () => {
   const repeatedTemplates = Array(4).fill(template);
 
   return (
-    <div className="ml-product-list-skeleton">
+    <div className="ml-product-list-skeleton" data-testid='product-list-skeleton'>
       <div className="ml-product-list-skeleton__container">
         {repeatedTemplates.map((item, index) => (
           <div key={index}>{item}</div>

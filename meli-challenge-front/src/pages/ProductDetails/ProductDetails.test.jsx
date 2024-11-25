@@ -1,83 +1,105 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import ProductDetails from './ProductDetails';
-import productService from '../../services/products/products';
 import { useParams } from 'react-router-dom';
+import { CategoriesContext } from '../../hooks/CategoriesProvider.jsx';
+import productService from '../../services/products/products.js';
+import { formatCurrency } from '../../utils/priceTransform';
 
-// Mock the productService.getProduct method
-jest.mock('../../services/products/products.js', () => ({
-  getProduct: jest.fn(),
-}));
-
-// Mock the useParams hook
 jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
 
-describe('ProductDetails', () => {
-  const mockProduct = {
-    id: '123',
-    title: 'Test Product',
-    description: 'This is a test product.',
-    picture: 'test-image.jpg',
-    condition: 'new',
-    price: {
-      amount: 1000,
-    },
-  };
+jest.mock('../../services/products/products.js');
+jest.mock('../../utils/priceTransform');
 
+describe('ProductDetails Component', () => {
   beforeEach(() => {
-    // Mock the implementation of useParams to return a specific id
+    jest.clearAllMocks();
+  });
+
+  it('renders the skeleton while loading', () => {
     useParams.mockReturnValue({ id: '123' });
-  });
+    productService.getProduct.mockResolvedValueOnce({ item: null });
 
-  it('should fetch and display product details based on id from params', async () => {
-    productService.getProduct.mockResolvedValue({ item: mockProduct });
-
-    render(<ProductDetails />);
-
-    // Verify that the product details are rendered after fetch
-    await waitFor(() => screen.getByText(mockProduct.title));
-
-    // Check if the product data is displayed correctly
-    expect(screen.getByText(mockProduct.title)).toBeInTheDocument();
-    expect(screen.getByText(mockProduct.description)).toBeInTheDocument();
-    expect(screen.getByText('new')).toBeInTheDocument();
-    expect(screen.getByText('ARG 1.000')).toBeInTheDocument();
-    expect(screen.getByAltText(mockProduct.title)).toHaveAttribute(
-      'src',
-      mockProduct.picture
+    render(
+      <CategoriesContext.Provider value={{ categories: [] }}>
+        <ProductDetails />
+      </CategoriesContext.Provider>
     );
+
+    expect(screen.getByTestId('product-details-skeleton')).toBeInTheDocument();
   });
 
-  it('should call productService.getProduct with the correct id', async () => {
-    productService.getProduct.mockResolvedValue({ item: mockProduct });
+  it('renders product details after fetching data', async () => {
+    useParams.mockReturnValue({ id: '123' });
 
-    render(<ProductDetails />);
+    const mockProduct = {
+      picture: '/image.jpg',
+      title: 'Mock Product',
+      condition: 'New',
+      sold_quantity: 10,
+      price: { amount: 100, currency: 'USD' },
+      description: 'This is a mock description.',
+    };
 
-    await waitFor(() => screen.getByText(mockProduct.title));
+    productService.getProduct.mockResolvedValueOnce({ item: mockProduct });
 
-    // Verify that productService.getProduct was called with the correct id
-    expect(productService.getProduct).toHaveBeenCalledWith('123');
+    formatCurrency.mockReturnValueOnce('$ 100');
+
+    render(
+      <CategoriesContext.Provider value={{ categories: ['Electronics'] }}>
+        <ProductDetails />
+      </CategoriesContext.Provider>
+    );
+
+    await waitFor(() => expect(screen.getByText('Mock Product')).toBeInTheDocument());
+
+    expect(screen.getByText('Mock Product')).toBeInTheDocument();
+    expect(screen.getByText('New 10')).toBeInTheDocument();
+    expect(screen.getByText('$ 100')).toBeInTheDocument();
+    expect(screen.getByText('This is a mock description.')).toBeInTheDocument();
+    expect(screen.getByAltText('Mock Product')).toHaveAttribute('src', '/image.jpg');
+    expect(screen.getByText('Electronics')).toBeInTheDocument();
   });
 
-  it('should handle price formatting correctly', async () => {
-    productService.getProduct.mockResolvedValue({ item: mockProduct });
+  it('Should not render when id is empty', async () => {
+    useParams.mockReturnValue({ id: '' });
 
-    render(<ProductDetails />);
+    render(
+      <CategoriesContext.Provider value={{ categories: ['Electronics'] }}>
+        <ProductDetails />
+      </CategoriesContext.Provider>
+    );
 
-    await waitFor(() => screen.getByText(mockProduct.title));
-
-    // Verify that the formatted price is displayed correctly
-    expect(screen.getByText('ARG 1.000')).toBeInTheDocument();
+    expect(screen.queryByTestId('product-details')).not.toBeInTheDocument();
   });
 
-  it('should not render the product if id is null', () => {
-    useParams.mockReturnValue({ id: null });
+  it('renders formatted price correctly', async () => {
+    useParams.mockReturnValue({ id: '123' });
 
-    render(<ProductDetails />);
+    const mockProduct = {
+      picture: '/image.jpg',
+      title: 'Mock Product',
+      condition: 'New',
+      sold_quantity: 10,
+      price: { amount: 100, currency: 'USD' },
+      description: 'This is a mock description.',
+    };
 
-    // Verify that product details are not rendered
-    expect(screen.queryByText(mockProduct.title)).not.toBeInTheDocument();
-    expect(screen.queryByText(mockProduct.description)).not.toBeInTheDocument();
+    productService.getProduct.mockResolvedValueOnce({ item: mockProduct });
+
+    formatCurrency.mockReturnValueOnce(null);
+
+    render(
+      <CategoriesContext.Provider value={{ categories: ['Electronics'] }}>
+        <ProductDetails />
+      </CategoriesContext.Provider>
+    );
+
+    await waitFor(() => expect(screen.getByText('Mock Product')).toBeInTheDocument());
+
+    expect(screen.queryByText('$ 100')).not.toBeInTheDocument();
+    expect(formatCurrency).toHaveBeenCalledWith(mockProduct.price.amount, mockProduct.price.currency);
   });
 });

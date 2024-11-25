@@ -28,9 +28,7 @@ describe('ProductItem Component', () => {
 
   test('renders product details correctly', () => {
     render(
-      <MemoryRouter>
         <ProductItem product={mockProduct} />
-      </MemoryRouter>
     );
 
     // Check image
@@ -47,9 +45,7 @@ describe('ProductItem Component', () => {
 
   test('navigates to product details on click', () => {
     render(
-      <MemoryRouter>
         <ProductItem product={mockProduct} />
-      </MemoryRouter>
     );
 
     const productItem = screen.getByTestId('product-item');
@@ -57,4 +53,14 @@ describe('ProductItem Component', () => {
 
     expect(mockNavigate).toHaveBeenCalledWith(`/items/${mockProduct.id}`);
   });
+
+  test('renders free shipping icon if free_shipping is true', () => {
+    render(
+        <ProductItem product={mockProduct} />
+    );
+
+    const freeShippingImage = screen.getByTestId("freeShipping-icon");
+    expect(freeShippingImage).toHaveAttribute('src', "mocked_media_file_path");
+  });
+
 });
