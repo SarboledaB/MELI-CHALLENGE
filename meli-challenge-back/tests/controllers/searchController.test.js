@@ -11,7 +11,7 @@ describe('searchController', () => {
 
     beforeEach(() => {
         req = {
-            query: { q: 'example query' }, // Simulate a query string
+            query: { q: 'example query', limit: 2 }, // Simulate a query string
         };
         res = {
             status: jest.fn().mockReturnThis(),
@@ -37,7 +37,7 @@ describe('searchController', () => {
 
         await searchController(req, res, next);
 
-        expect(fetchSearchResults).toHaveBeenCalledWith('example query');
+        expect(fetchSearchResults).toHaveBeenCalledWith('example query', 2);
         expect(searchTransformer).toHaveBeenCalledWith(mockResults);
         expect(res.json).toHaveBeenCalledWith(mockTransformedData);
     });

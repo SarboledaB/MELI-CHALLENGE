@@ -14,7 +14,7 @@ describe('fetchSearchResults', () => {
         // Simulate the API response
         apiClient.get.mockResolvedValue({ data: mockResponse });
 
-        const result = await fetchSearchResults(query);
+        const result = await fetchSearchResults(query, 4);
 
         expect(apiClient.get).toHaveBeenCalledWith('/sites/MLA/search', {
             params: { q: query, limit: 4 },
@@ -28,7 +28,7 @@ describe('fetchSearchResults', () => {
         // Simulate an API error
         apiClient.get.mockRejectedValue(new Error('API Error'));
 
-        await expect(fetchSearchResults(query)).rejects.toThrow(
+        await expect(fetchSearchResults(query, 4)).rejects.toThrow(
             'Error while querying the external API'
         );
         expect(apiClient.get).toHaveBeenCalledWith('/sites/MLA/search', {

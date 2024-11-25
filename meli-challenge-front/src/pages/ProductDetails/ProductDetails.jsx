@@ -27,7 +27,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="ml-product-details">
+    <div className="ml-product-details" data-testid='product-details'>
       <Breadcrumb categories={categories} />
       <div className="ml-product-details__container">
         <div className="ml-product-details__image">
@@ -45,7 +45,7 @@ const ProductDetails = () => {
           <button>Comprar</button>
         </div>
         <div className="ml-product-details__info">
-          <h1>Descripcion del producto</h1>
+          <h1>Descripción del producto</h1>
           <p>{product.description}</p>
         </div>
       </div>

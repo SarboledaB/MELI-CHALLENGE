@@ -15,6 +15,10 @@ describe('productTransformer', () => {
         const mockDescription = 'This is a sample description.';
 
         const expectedResult = {
+            author: {
+                name: "Sebastian" ,
+                lastname: "Arboleda"
+            },
             item: {
                 id: '123',
                 title: 'Sample Product',

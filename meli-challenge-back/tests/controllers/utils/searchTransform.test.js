@@ -33,6 +33,10 @@ describe('searchTransformer', () => {
         };
 
         const expectedResult = {
+            author: {
+                name: "Sebastian" ,
+                lastname: "Arboleda"
+            },
             categories: [['Electronics', 'Laptops']],
             items: [
                 {
@@ -61,6 +65,10 @@ describe('searchTransformer', () => {
         };
 
         const expectedResult = {
+            author: {
+                name: "Sebastian" ,
+                lastname: "Arboleda"
+            },
             categories: [],
             items: [],
         };
@@ -88,6 +96,10 @@ describe('searchTransformer', () => {
         };
 
         const expectedResult = {
+            author: {
+                name: "Sebastian" ,
+                lastname: "Arboleda"
+            },
             categories: [['Electronics', 'Laptops']],
             items: [],
         };
@@ -120,6 +132,10 @@ describe('searchTransformer', () => {
         };
 
         const expectedResult = {
+            author: {
+                name: "Sebastian" ,
+                lastname: "Arboleda"
+            },
             categories: [],
             items: [
                 {

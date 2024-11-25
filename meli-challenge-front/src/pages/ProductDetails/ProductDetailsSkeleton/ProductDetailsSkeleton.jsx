@@ -2,7 +2,7 @@ import './ProductDetailsSkeleton.scss';
 
 const ProductDetailsSkeleton = () => {
   return (
-    <div className="ml-product-details-skeleton">
+    <div className="ml-product-details-skeleton" data-testid="product-details-skeleton">
       <div className="ml-product-details-skeleton__container">
         <div className="ml-product-details-skeleton__image">
           <div className="ml-product-details-skeleton__image-img"></div>

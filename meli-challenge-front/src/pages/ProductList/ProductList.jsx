@@ -24,6 +24,9 @@ const ProductList = () => {
         );
         setProducts(results.items);
         setCategories(results.categories);
+      } else {
+        setProducts([]);
+        setCategories([]);
       }
     }
     fetchData();
