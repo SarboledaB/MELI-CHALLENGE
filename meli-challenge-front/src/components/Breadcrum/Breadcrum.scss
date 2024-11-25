@@ -3,6 +3,7 @@
 .ml-breadcrumb {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: variables.$container-max-width;
   margin-top: variables.$space-sm;
@@ -17,5 +18,11 @@
     &:last-child {
       font-weight: bold;
     }
+  }
+}
+
+@media (min-width: variables.$breakpoint-md) {
+  .ml-breadcrumb {
+    justify-content: flex-start;
   }
 }

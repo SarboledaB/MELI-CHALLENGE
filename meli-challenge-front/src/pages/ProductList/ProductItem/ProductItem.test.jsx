@@ -41,7 +41,6 @@ describe('ProductItem Component', () => {
     // Check title
     expect(screen.getByText(mockProduct.title)).toBeInTheDocument();
 
-
     // Check condition
     expect(screen.getByText(mockProduct.condition)).toBeInTheDocument();
   });

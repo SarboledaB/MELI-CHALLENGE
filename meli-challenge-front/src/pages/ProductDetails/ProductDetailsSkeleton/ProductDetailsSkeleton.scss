@@ -1,17 +1,15 @@
 @use '@styles/variables';
 
-.ml-product-details {
+.ml-product-details-skeleton {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  height: 1000px;
 
   &__container {
     display: flex;
+    align-items: flex-start;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     background-color: variables.$gray-scale-5;
     width: 100%;
     max-width: variables.$container-max-width;
@@ -24,12 +22,13 @@
     flex-direction: column;
     margin: variables.$space-xl;
     width: 100%;
-    overflow: hidden;
 
-    img {
+    &-img {
       align-self: center;
-      min-height: 500px;
-      max-width: 680px;
+      width: 500px;
+      height: 500px;
+      background-color: variables.$gray-scale-4;
+      border-radius: variables.$border-radius;
     }
   }
 
@@ -38,16 +37,18 @@
     flex-direction: column;
     margin: variables.$space-xl;
     width: 100%;
-    overflow: hidden;
 
-    h1 {
+    &-title {
       margin: variables.$space-xl 0;
-      font-size: variables.$font-size-xxl;
+      width: 150px;
+      height: 30px;
+      background-color: variables.$gray-scale-4;
     }
 
-    p {
-      color: variables.$gray-scale-3;
-      font-size: variables.$font-size-md;
+    &-description {
+      width: 100%;
+      height: 200px;
+      background-color: variables.$gray-scale-4;
     }
   }
 
@@ -55,34 +56,37 @@
     width: 100%;
     margin: variables.$space-xl;
 
-    span {
-      font-size: variables.$font-size-sm;
+    &-condition {
+      width: 20px;
+      height: 10px;
+      background-color: variables.$gray-scale-4;
     }
 
-    h1 {
-      font-size: variables.$font-size-xl;
+    &-title {
+      width: 100%;
+      height: 20px;
+      background-color: variables.$gray-scale-4;
+      margin: variables.$space-lg 0;
     }
 
-    h2 {
-      font-size: variables.$font-size-xxxl;
-      font-weight: unset;
+    &-price {
+      width: 50%;
+      height: 30px;
+      background-color: variables.$gray-scale-4;
       margin: variables.$space-xl 0;
     }
 
-    button {
-      color: variables.$gray-scale-5;
-      background: variables.$secondary-color;
-      padding: variables.$space-md;
+    &-btn {
+      height: 40px;
+      background-color: variables.$gray-scale-4;
       border-radius: variables.$border-radius;
-      font-size: variables.$font-size-md;
       width: 100%;
-      border: none;
     }
   }
 }
 
 @media (min-width: variables.$breakpoint-md) {
-  .ml-product-details {
+  .ml-product-details-skeleton {
     &__container {
       align-items: flex-start;
       justify-content: flex-start;

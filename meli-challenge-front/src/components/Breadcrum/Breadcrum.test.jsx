@@ -20,7 +20,6 @@ describe('Breadcrumb component', () => {
     });
   });
 
-
   it('should render breadcrumb with a single category', () => {
     const categories = ['Home'];
     render(<Breadcrumb categories={categories} />);

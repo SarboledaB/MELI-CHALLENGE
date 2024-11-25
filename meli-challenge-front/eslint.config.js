@@ -34,9 +34,6 @@ export default [
         { allowConstantExport: true },
       ],
     },
-    extends: [
-      'eslint:recommended',
-      'plugin:jest/recommended',
-    ],
+    extends: ['eslint:recommended', 'plugin:jest/recommended'],
   },
 ];

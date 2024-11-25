@@ -1,15 +1,17 @@
 import './ProductList.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import productService from '../../services/products/products.js';
 import { useLocation } from 'react-router-dom';
 import ProductItem from './ProductItem/ProductItem.jsx';
 import { addSpaceURL } from '../../utils/urlTransform.js';
 import Breadcrum from '../../components/Breadcrum/Breadcrum.jsx';
+import ProductListSkeleton from './ProductListSkeleton/ProductListSkeleton.jsx';
+import { CategoriesContext } from '../../hooks/CategoriesProvider.jsx';
 
 const ProductList = () => {
   const location = useLocation();
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState(null);
+  const { categories, setCategories } = useContext(CategoriesContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,6 +28,10 @@ const ProductList = () => {
     }
     fetchData();
   }, [location]);
+
+  if (!products) {
+    return <ProductListSkeleton />;
+  }
 
   return (
     <div className="ml-product-list">

@@ -16,7 +16,9 @@ describe('Searchbar', () => {
   beforeEach(() => {
     navigate = jest.fn();
     require('react-router-dom').useNavigate.mockReturnValue(navigate);
-    replaceSpaceURL.mockImplementation((searchTerm) => searchTerm.replace(/\s+/g, '-'));
+    replaceSpaceURL.mockImplementation((searchTerm) =>
+      searchTerm.replace(/\s+/g, '-')
+    );
   });
 
   it('should render the input field and button', () => {
@@ -36,7 +38,7 @@ describe('Searchbar', () => {
   });
 
   it('should navigate to the correct URL when form is submitted', () => {
-    render( <Searchbar />);
+    render(<Searchbar />);
 
     const input = screen.getByTestId('input');
     fireEvent.change(input, { target: { value: 'test search' } });

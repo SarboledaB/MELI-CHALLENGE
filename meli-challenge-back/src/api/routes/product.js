@@ -51,6 +51,8 @@ const router = express.Router();
  *                           type: string
  *                         condition:
  *                           type: string
+ *                         sold_quantity:
+ *                           type: number
  *                         free_shipping:
  *                           type: boolean
  *

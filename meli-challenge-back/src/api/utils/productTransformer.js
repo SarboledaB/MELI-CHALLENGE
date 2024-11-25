@@ -21,6 +21,7 @@ const productTransformer = (product, description) => {
       picture: product.pictures[0].url,
       condition: product.condition,
       free_shipping: product.shipping.free_shipping,
+      sold_quantity: product.sold_quantity,
       description: description,
     },
   };

@@ -2,17 +2,10 @@ import './ProductItem.scss';
 import PropTypes from 'prop-types';
 import freeShipping from '../../../assets/ic_shipping.png';
 import { useNavigate } from 'react-router-dom';
+import { formatCurrency } from '../../../utils/priceTransform.js';
 
 const ProductItem = ({ product }) => {
   const navigate = useNavigate();
-
-  const formatCurrency = (value) => {
-    return new Intl.NumberFormat('es-AR', {
-      style: 'currency',
-      currency: 'ARG',
-      minimumFractionDigits: 0,
-    }).format(value);
-  };
 
   return (
     <div
@@ -28,10 +21,10 @@ const ProductItem = ({ product }) => {
       />
       <div className="ml-product-item__details">
         <h3>
-          $ {formatCurrency(product.price.amount)}
-          {
-            product.free_shipping ?? <img src={freeShipping} alt={product.title} />
-          }
+          {formatCurrency(product.price.amount, product.price.currency)}
+          {product.free_shipping ?? (
+            <img src={freeShipping} alt={product.title} />
+          )}
         </h3>
         <p className="ml-product-item__title">{product.title}</p>
       </div>
