@@ -1,0 +1,62 @@
+@use '@styles/variables';
+
+.ml-product-list-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 1000px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-color: variables.$gray-scale-5;
+    width: 100%;
+    max-width: variables.$container-max-width;
+    margin: variables.$space-md;
+    border-radius: variables.$border-radius;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &-img {
+      width: 180px;
+      height: 180px;
+      border-radius: variables.$border-radius;
+      margin: variables.$space-md;
+      background-color: variables.$gray-scale-4;
+    }
+
+    &-details {
+      width: 70%;
+
+      &-price {
+        margin: variables.$space-xl 0;
+        height: variables.$font-size-xl;
+        width: 100px;
+        background-color: variables.$gray-scale-4;
+      }
+
+      &-title {
+        height: variables.$font-size-lg;
+        width: 100px;
+        background-color: variables.$gray-scale-4;
+      }
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-md) {
+  .ml-product-list-skeleton {
+    &__item {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+}

@@ -3,8 +3,8 @@
 .ml-product-item {
   position: relative;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 
   &:not(:last-child)::after {
@@ -51,5 +51,25 @@
     color: variables.$gray-scale-3;
     font-size: variables.$font-size-xs;
     margin: variables.$space-xl 0;
+  }
+}
+
+@media (min-width: variables.$breakpoint-md) {
+  .ml-product-item {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &__details {
+      width: 60%;
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-lg) {
+  .ml-product-item {
+    &__details {
+      width: 70%;
+    }
   }
 }

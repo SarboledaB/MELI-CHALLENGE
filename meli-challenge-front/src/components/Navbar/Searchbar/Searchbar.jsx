@@ -15,7 +15,11 @@ const Searchbar = () => {
   };
 
   return (
-    <form className="ml-searchbar" onSubmit={handleSearch} data-testid="searchbar">
+    <form
+      className="ml-searchbar"
+      onSubmit={handleSearch}
+      data-testid="searchbar"
+    >
       <input
         data-testid="input"
         type="text"

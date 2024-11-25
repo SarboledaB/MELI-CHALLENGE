@@ -43,7 +43,10 @@ describe('ProductDetails', () => {
     expect(screen.getByText(mockProduct.description)).toBeInTheDocument();
     expect(screen.getByText('new')).toBeInTheDocument();
     expect(screen.getByText('ARG 1.000')).toBeInTheDocument();
-    expect(screen.getByAltText(mockProduct.title)).toHaveAttribute('src', mockProduct.picture);
+    expect(screen.getByAltText(mockProduct.title)).toHaveAttribute(
+      'src',
+      mockProduct.picture
+    );
   });
 
   it('should call productService.getProduct with the correct id', async () => {
@@ -77,5 +80,4 @@ describe('ProductDetails', () => {
     expect(screen.queryByText(mockProduct.title)).not.toBeInTheDocument();
     expect(screen.queryByText(mockProduct.description)).not.toBeInTheDocument();
   });
-  
 });

@@ -1,11 +1,16 @@
 import './ProductDetails.scss';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import productService from '../../services/products/products.js';
+import ProductDetailsSkeleton from './ProductDetailsSkeleton/ProductDetailsSkeleton';
+import Breadcrum from '../../components/Breadcrum/Breadcrum.jsx';
+import { CategoriesContext } from '../../hooks/CategoriesProvider.jsx';
+import { formatCurrency } from '../../utils/priceTransform.js';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
+  const { categories } = useContext(CategoriesContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,27 +22,31 @@ const ProductDetails = () => {
     fetchData();
   }, [id]);
 
-  const formatCurrency = (value) => {
-    return new Intl.NumberFormat('es-AR', {
-      style: 'currency',
-      currency: 'ARG',
-      minimumFractionDigits: 0,
-    }).format(value);
-  };
+  if (!product) {
+    return <ProductDetailsSkeleton />;
+  }
 
   return (
     <div className="ml-product-details">
+      <Breadcrum categories={categories} />
       <div className="ml-product-details__container">
-        <div className="ml-product-details__info">
+        <div className="ml-product-details__image">
           <img src={product.picture} alt={product.title} />
-          <h1>Descripcion del producto</h1>
-          <p>{product.description}</p>
         </div>
         <div className="ml-product-details__summary">
-          <span>{product.condition}</span>
+          <span>
+            {product.condition} {product.sold_quantity}
+          </span>
           <h1>{product.title}</h1>
-          <h2>{formatCurrency(product.price?.amount) ?? ''}</h2>
-          <button>COMPRAR</button>
+          <h2>
+            {formatCurrency(product.price?.amount, product.price.currency) ??
+              ''}
+          </h2>
+          <button>Comprar</button>
+        </div>
+        <div className="ml-product-details__info">
+          <h1>Descripcion del producto</h1>
+          <p>{product.description}</p>
         </div>
       </div>
     </div>
