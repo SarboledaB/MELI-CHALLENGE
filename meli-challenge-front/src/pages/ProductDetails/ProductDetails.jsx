@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import productService from '../../services/products/products.js';
 import ProductDetailsSkeleton from './ProductDetailsSkeleton/ProductDetailsSkeleton';
-import Breadcrum from '../../components/Breadcrum/Breadcrum.jsx';
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb.jsx';
 import { CategoriesContext } from '../../hooks/CategoriesProvider.jsx';
 import { formatCurrency } from '../../utils/priceTransform.js';
 
@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
   return (
     <div className="ml-product-details">
-      <Breadcrum categories={categories} />
+      <Breadcrumb categories={categories} />
       <div className="ml-product-details__container">
         <div className="ml-product-details__image">
           <img src={product.picture} alt={product.title} />

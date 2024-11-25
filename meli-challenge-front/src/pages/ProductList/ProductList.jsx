@@ -4,7 +4,7 @@ import productService from '../../services/products/products.js';
 import { useLocation } from 'react-router-dom';
 import ProductItem from './ProductItem/ProductItem.jsx';
 import { addSpaceURL } from '../../utils/urlTransform.js';
-import Breadcrum from '../../components/Breadcrum/Breadcrum.jsx';
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb.jsx';
 import ProductListSkeleton from './ProductListSkeleton/ProductListSkeleton.jsx';
 import { CategoriesContext } from '../../hooks/CategoriesProvider.jsx';
 
@@ -35,7 +35,7 @@ const ProductList = () => {
 
   return (
     <div className="ml-product-list">
-      <Breadcrum categories={categories} />
+      <Breadcrumb categories={categories} />
       <div className="ml-product-list__container">
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />

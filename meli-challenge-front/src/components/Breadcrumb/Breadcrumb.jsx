@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './Breadcrum.scss';
+import './Breadcrumb.scss';
 
 const Breadcrumb = ({ categories }) => {
   if (!Array.isArray(categories) || categories.length === 0) {

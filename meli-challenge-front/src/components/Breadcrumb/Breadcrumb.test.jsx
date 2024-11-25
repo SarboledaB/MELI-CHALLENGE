@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Breadcrumb from './Breadcrum';
+import Breadcrumb from './Breadcrumb';
 
 describe('Breadcrumb component', () => {
   it('should render null if categories is an empty array', () => {
