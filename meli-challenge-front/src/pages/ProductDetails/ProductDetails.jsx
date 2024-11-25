@@ -45,7 +45,7 @@ const ProductDetails = () => {
           <button>Comprar</button>
         </div>
         <div className="ml-product-details__info">
-          <h1>Descripcion del producto</h1>
+          <h1>Descripción del producto</h1>
           <p>{product.description}</p>
         </div>
       </div>
