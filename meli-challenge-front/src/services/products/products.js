@@ -5,7 +5,7 @@ const API_BASE_URL = 'http://localhost:3000/api/items';
 const productService = {
   async searchProducts(query) {
     try {
-      const response = await axios.get(`${API_BASE_URL}?q=${query}`);
+      const response = await axios.get(`${API_BASE_URL}?q=${query}&limit=4`);
       return response.data;
     } catch (error) {
       console.error('Error al buscar los productos:', error);

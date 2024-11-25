@@ -16,6 +16,12 @@ const router = express.Router();
  *           type: string
  *         required: true
  *         description: Search
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: number
+ *         required: false
+ *         description: limit
  *     responses:
  *       200:
  *         description: List Results

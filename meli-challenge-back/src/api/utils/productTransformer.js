@@ -11,6 +11,10 @@ const productTransformer = (product, description) => {
   }
 
   return {
+    author: {
+      name: "Sebastian" ,
+      lastname: "Arboleda"
+    },
     item: {
       id: product.id,
       title: product.title,
