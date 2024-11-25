@@ -7,6 +7,9 @@ sarboledabotero@gmail.com
 
 linkedin.com/in/sarboledab/
 
+## Components docs
+
+[Components docs](https://github.com/SarboledaB/meli-challenge/wiki)
 
 ## Prerequisites
 
